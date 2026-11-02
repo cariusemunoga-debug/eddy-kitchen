@@ -1,0 +1,27 @@
+EDDYS KITCHEN ENVIRONMENT CONFIGURATION
+
+LOCAL DEVELOPMENT
+The app can run with the local test admin account documented in README.txt. Do not use those test credentials on a public site.
+
+PUBLIC DEPLOYMENT
+Set these environment variables in your hosting provider (do not put secrets in frontend files):
+- NODE_ENV=production
+- ADMIN_USERNAME=<unique administrator username>
+- ADMIN_PASSWORD=<strong unique password>
+- SESSION_SECRET=<random secret with at least 32 characters>
+- DATABASE_PATH=/var/data/eddys-kitchen.db (or another persistent writable path)
+- FLW_SECRET_KEY=<Flutterwave API secret key, only after merchant setup>
+- FLW_SECRET_HASH=<Flutterwave webhook secret hash>
+
+PAYMENTS
+1. Configure and verify the Flutterwave merchant account.
+2. Add FLW_SECRET_KEY and FLW_SECRET_HASH to the hosting environment.
+3. Configure the provider webhook URL as https://YOUR-DOMAIN/api/payments/webhook.
+4. Test using provider test credentials first. Switch to live credentials only after the merchant account is approved and test transactions pass.
+5. Never mark an online payment as paid manually. The backend only accepts provider verification/webhook for online payment status.
+
+DATA BACKUP
+Back up the persistent database file and frontend/uploads folder before deploying updates. This source ZIP does not contain private customer records, old orders, or previously uploaded photos.
+
+LIMITS
+Browser notifications are in-app/browser notifications, not SMS, WhatsApp, or email. Rider GPS only works while the rider page is open and permission is granted. A live customer/rider test requires both devices to use the same deployed HTTPS address.
