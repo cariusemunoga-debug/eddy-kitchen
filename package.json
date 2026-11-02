@@ -1,43 +1,22 @@
 {
-  "name": "vary",
-  "description": "Manipulate the HTTP Vary header",
-  "version": "1.1.2",
-  "author": "Douglas Christopher Wilson <doug@somethingdoug.com>",
-  "license": "MIT",
-  "keywords": [
-    "http",
-    "res",
-    "vary"
-  ],
-  "repository": "jshttp/vary",
-  "devDependencies": {
-    "beautify-benchmark": "0.2.4",
-    "benchmark": "2.1.4",
-    "eslint": "3.19.0",
-    "eslint-config-standard": "10.2.1",
-    "eslint-plugin-import": "2.7.0",
-    "eslint-plugin-markdown": "1.0.0-beta.6",
-    "eslint-plugin-node": "5.1.1",
-    "eslint-plugin-promise": "3.5.0",
-    "eslint-plugin-standard": "3.0.1",
-    "istanbul": "0.4.5",
-    "mocha": "2.5.3",
-    "supertest": "1.1.0"
-  },
-  "files": [
-    "HISTORY.md",
-    "LICENSE",
-    "README.md",
-    "index.js"
-  ],
-  "engines": {
-    "node": ">= 0.8"
-  },
+  "name": "eddys-kitchen",
+  "version": "3.3.0",
+  "private": true,
+  "description": "Eddys Kitchen food ordering app with admin reports, notifications and payment reconciliation, online deployment configuration, one-time first-admin setup, payment receiving instructions, persistent uploads, inventory management, expense and profit tracking, staff directory, admin activity log, kitchen display, multi-branch management, supplier purchasing, customer loyalty, rider tracking and customer accounts; individual staff workspaces with admin-controlled roles and section permissions, administrator-wide control centre, staff sign-in audit trail",
+  "main": "backend/server.js",
   "scripts": {
-    "bench": "node benchmark/index.js",
-    "lint": "eslint --plugin markdown --ext js,md .",
-    "test": "mocha --reporter spec --bail --check-leaks test/",
-    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
-    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+    "start": "node backend/server.js",
+    "check": "node --check backend/server.js && node --check backend/repair-database.js && node --check backend/check-database.js && node --check frontend/app.js && node --check frontend/admin-extras.js && node --check frontend/staff.js && node --check frontend/rider.js && node --check frontend/sw.js && node --check scripts/check-workflow.js",
+    "check:db": "node backend/check-database.js",
+    "check:workflow": "node scripts/check-workflow.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "sql.js": "^1.13.0"
+  },
+  "engines": {
+    "node": ">=20 <25"
   }
 }

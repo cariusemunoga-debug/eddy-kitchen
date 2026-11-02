@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: eddys-kitchen
+    runtime: node
+    plan: starter
+    buildCommand: npm install --no-audit --no-fund
+    startCommand: npm start
+    healthCheckPath: /api/health
+    disk:
+      name: eddys-kitchen-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_PATH
+        value: /var/data/eddys-kitchen.db
+      - key: UPLOADS_DIR
+        value: /var/data/uploads
+      - key: SESSION_SECRET
+        generateValue: true

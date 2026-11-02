@@ -1,0 +1,18 @@
+{
+  "name": "Eddys Kitchen",
+  "short_name": "Eddys Kitchen",
+  "description": "Order food and track deliveries from Eddys Kitchen.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

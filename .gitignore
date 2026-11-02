@@ -5,3 +5,12 @@ node_modules/
 backend/*.db
 backend/*.db-shm
 backend/*.db-wal
+
+# User-uploaded images and local runtime data
+frontend/uploads/
+.DS_Store
+*.log
+backend/*.server.lock
+backend/*.writing-*
+backend/*.pre-migration.bak
+backend/*.starter-*.bak
